@@ -1,0 +1,56 @@
+name: Generate master index.html
+
+on:
+  workflow_dispatch:  # 수동 실행만
+
+permissions:
+  contents: write
+
+jobs:
+  generate-index:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install pup
+        run: |
+          curl -sSL https://github.com/ericchiang/pup/releases/download/v0.4.0/pup_v0.4.0_linux_amd64.zip -o pup.zip
+          unzip pup.zip
+          sudo install pup /usr/local/bin/
+
+      - name: Generate root index.html
+        run: |
+          echo "<!DOCTYPE html>" > index.html
+          echo "<html><head><meta charset='utf-8'><title>실습 목록</title></head><body>" >> index.html
+          echo "<h1>실습 목록</h1>" >> index.html
+
+          for dir in s*/; do
+            echo "<h2>${dir%/}</h2><ul>" >> index.html
+
+            for file in "$dir"*.html; do
+              [ -f "$file" ] || continue
+              title=$(pup 'h1 text{}' < "$file" | head -n 1)
+              base=$(basename "$file")
+              echo "<li><a href=\"$file\">$base</a> - $title</li>" >> index.html
+            done
+
+            echo "</ul>" >> index.html
+          done
+
+          echo "</body></html>" >> index.html
+
+      - name: Commit and push index.html
+        env:
+          TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git remote set-url origin https://x-access-token:${TOKEN}@github.com/${{ github.repository }}
+          git pull origin main --rebase
+          git add index.html
+          git diff --cached --quiet || git commit -m "🔄 자동 생성된 index.html"
+          git push origin main
+
+
