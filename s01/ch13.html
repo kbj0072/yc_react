@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>JavaScript 복습</title>
+
+  <link id="prism-theme" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css">
+  <link rel="stylesheet" href="../css/style.css" />
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-javascript.min.js"></script>
+</head>
+<body>
+  <h1>1-13. 콜백 함수</h1>
+  <button id="theme-toggle">🌙 다크 모드</button>
+
+  <pre id="editor" class="language-javascript" contenteditable="true" spellcheck="false">
+// 1. 콜백함수
+function main(value) {
+  value(); // 콜백함수 실행
+}
+
+main(() => {
+  console.log("i am sub");
+}); // 콜백함수 전달
+
+// 2. 콜백함수의 활용
+function repeat(count, callback) {
+  for (let idx = 1; idx <= count; idx++) {
+    callback(idx); // 콜백 함수에 1부터 count까지 파라미터로 넣어 반복 호출
+  }
+}
+
+repeat(5, (idx) => { // 1부터 5까지 콜백함수(기존 값 출력) 반복 호출
+  console.log(idx);
+});
+
+repeat(5, (idx) => { // 1부터 5까지 콜백함수(기존 값의 2배 출력) 반복 호출
+  console.log(idx * 2);
+});
+
+repeat(5, (idx) => { // 1부터 5까지 콜백함수(기존 값의 3배 출력) 반복 호출
+  console.log(idx * 3);
+});
+  </pre>
+
+  <button id="run-btn">▶️ Run</button>
+  <div id="output" class="console-output"></div>
+
+  <!-- 기능 스크립트 -->
+  <script src="../js/theme-toggle.js"></script>
+  <script src="../js/editor.js"></script>
+</body>
+</html>

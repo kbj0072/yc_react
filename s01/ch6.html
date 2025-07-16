@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>JavaScript 복습</title>
+
+  <link id="prism-theme" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css">
+  <link rel="stylesheet" href="../css/style.css" />
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-javascript.min.js"></script>
+</head>
+<body>
+  <h1>1-6. 형 변환</h1>
+  <button id="theme-toggle">🌙 다크 모드</button>
+
+  <pre id="editor" class="language-javascript" contenteditable="true" spellcheck="false">
+// 1. 묵시적 형 변환
+// -> 자바스크립트 엔진이 알아서 형 변환 하는것
+
+let num = 10;
+let str = "20";
+
+const result = num + str;
+console.log(result, ": 문자로 바뀌여서 합쳐짐");
+
+// 2. 명시적 형 변환
+// -> 프로그래머 내장함수 등을 이용해서 직접 형 변환을 명시
+// -> 문자열 -> 숫자
+let str1 = "10";
+let strToNum1 = Number(str1);
+
+let str2 = "10개";
+let strToNum2 = parseInt(str2);
+
+console.log(strToNum1, strToNum2, " : 앞의 숫자만 가져오려면 parseInt");
+
+// -> 숫자 -> 문자열
+let num1 = 20;
+let numToStr1 = String(num1);
+
+console.log(numToStr1 + "입니다");
+  </pre>
+
+  <button id="run-btn">▶️ Run</button>
+  <div id="output" class="console-output"></div>
+
+  <!-- 기능 스크립트 -->
+  <script src="../js/theme-toggle.js"></script>
+  <script src="../js/editor.js"></script>
+</body>
+</html>

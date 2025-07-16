@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>JavaScript 복습</title>
+
+  <link id="prism-theme" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css">
+  <link rel="stylesheet" href="../css/style.css" />
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-javascript.min.js"></script>
+</head>
+<body>
+  <h1>1-5. 자료형(타입)</h1>
+  <button id="theme-toggle">🌙 다크 모드</button>
+
+  <pre id="editor" class="language-javascript" contenteditable="true" spellcheck="false">
+// 1. Number Type
+let num1 = 27;
+let num2 = 1.5;
+let num3 = -20;
+
+let inf = Infinity;
+let mInf = -Infinity;
+
+let nan = NaN;
+
+console.log(num1, num2, num3, inf, mInf, nan);
+
+// 2. String Type
+let myName = "이정환";
+let myLocation = "목동";
+let introduce = myName + myLocation;
+console.log(introduce);
+
+let introduceText = `${myName}은 ${myLocation}에 거주합니다`;
+console.log(introduceText);
+
+// 3. Boolean Type
+let isSwitchOn = true;
+let isEmpty = false;
+console.log(isSwitchOn, isEmpty);
+
+// 4. Null Type (아무것도 없다)
+let empty = null;
+console.log(empty);
+
+// 5. Undefined Type
+let none;
+console.log(none);
+  </pre>
+
+  <button id="run-btn">▶️ Run</button>
+  <div id="output" class="console-output"></div>
+
+  <!-- 기능 스크립트 -->
+  <script src="../js/theme-toggle.js"></script>
+  <script src="../js/editor.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>JavaScript 복습</title>
+
+  <link id="prism-theme" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css">
+  <link rel="stylesheet" href="../css/style.css" />
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-javascript.min.js"></script>
+</head>
+<body>
+  <h1>1-12. 함수 표현식과 화살표 함수</h1>
+  <button id="theme-toggle">🌙 다크 모드</button>
+
+  <pre id="editor" class="language-javascript" contenteditable="true" spellcheck="false">
+// 1. 함수 표현식
+function funcA() {        // 함수 선언문, 호이스팅됨
+  console.log("funcA");
+}
+
+let varA = funcA;
+varA(); // 호출
+
+let varB = function () {  // 함수 표현식, 익명함수를 저장
+  console.log("funcB");
+};
+
+varB(); // 호출
+
+// 2. 화살표 함수
+let varC = (value) => {
+  console.log(value);
+  return value + 1;
+};
+
+console.log(varC(10));
+  </pre>
+
+  <button id="run-btn">▶️ Run</button>
+  <div id="output" class="console-output"></div>
+
+  <!-- 기능 스크립트 -->
+  <script src="../js/theme-toggle.js"></script>
+  <script src="../js/editor.js"></script>
+</body>
+</html>

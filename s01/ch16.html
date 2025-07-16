@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>JavaScript 복습</title>
+
+  <link id="prism-theme" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css">
+  <link rel="stylesheet" href="../css/style.css" />
+
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-javascript.min.js"></script>
+</head>
+<body>
+  <h1>1-16. 객체 2</h1>
+  <button id="theme-toggle">🌙 다크 모드</button>
+
+  <pre id="editor" class="language-javascript" contenteditable="true" spellcheck="false">
+// 1. 상수 객체
+const animal = {
+  type: "고양이",
+  name: "나비",
+  color: "black",
+};
+
+animal.age = 2; // 추가
+animal.name = "까망이"; // 수정
+delete animal.color; // 삭제
+
+// 2. 메서드
+// -> 값이 함수인 프로퍼티를 말함
+
+const person = {
+  name: "이정환",
+  // 메서드 선언
+  sayHi() {
+    console.log("안녕!");
+  },
+};
+
+person.sayHi();     // 호출 방법1
+person["sayHi"]();  // 호출 방법2
+  </pre>
+
+  <button id="run-btn">▶️ Run</button>
+  <div id="output" class="console-output"></div>
+
+  <!-- 기능 스크립트 -->
+  <script src="../js/theme-toggle.js"></script>
+  <script src="../js/editor.js"></script>
+</body>
+</html>

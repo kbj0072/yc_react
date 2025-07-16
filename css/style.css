@@ -1,0 +1,68 @@
+/* 기본: 라이트 모드 */
+:root {
+  --bg: #ffffff;
+  --fg: #000000;
+  --console-bg: #f0f0f0;
+  --console-fg: #222;
+  --console-error: #c00;
+  --console-warn: #e88000;
+}
+
+/* 다크 모드 클래스 */
+.dark {
+  --bg: #1e1e1e;
+  --fg: #ffffff;
+  --console-bg: #111;
+  --console-fg: #0f0;
+  --console-error: #f55;
+  --console-warn: #fa0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  transition: background 0.3s, color 0.3s;
+  padding: 2em;
+}
+
+h1 {
+  margin-bottom: 1em;
+}
+
+#editor {
+  font-family: monospace;
+  font-size: 14px;
+  padding: 1em;
+  min-height: 200px;
+  border-radius: 8px;
+  border: 1px solid #888;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  outline: none;
+  background: transparent;
+}
+
+#run-btn {
+  margin-top: 1em;
+  padding: 0.5em 1em;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.console-output {
+  background: var(--console-bg);
+  color: var(--console-fg);
+  padding: 1em;
+  margin-top: 1em;
+  border-radius: 6px;
+  font-family: monospace;
+  white-space: pre-wrap;
+  min-height: 80px;
+}
+
+.console-output .error {
+  color: var(--console-error);
+}
+.console-output .warn {
+  color: var(--console-warn);
+}
