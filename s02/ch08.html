@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JavaScript 복습 - 심화</title>
+
+    <link
+      id="prism-theme"
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-javascript.min.js"></script>
+  </head>
+  <body>
+    <h1>2-8. 배열과 메서드 (2) - 순회와 탐색</h1>
+    <button id="theme-toggle">🌙 다크 모드</button>
+
+    <pre
+      id="editor"
+      class="language-javascript"
+      contenteditable="true"
+      spellcheck="false"
+    >
+// 1가지 순회 메서드와 5가지 탐색 메서드 (p. 98)
+
+// 1. 순회 메서드 forEach (p. 98)
+// 모든 요소를 순회하면서, 각각의 요소에 특정 동작을 수행시키는 메서드
+let arr1 = [1, 2, 3];
+
+arr1.forEach(function (item, idx, arr) {
+  console.log(idx, item * 2); // 0 2, 1 4, 2 6
+});
+
+let doubledArr = [];
+
+arr1.forEach((item) => {
+  doubledArr.push(item * 2);
+});
+console.log(doubledArr); // [2, 4, 6]
+
+// 여기부턴 탐색 메서드
+
+// 1. includes (p. 101)
+// 배열에 특정 요소가 있는지 확인하는 그런 메서드
+let arr2 = [1, 2, 3];
+let isInclude = arr2.includes(10);
+console.log(isInclude); // false
+
+// 2. indexOf (p. 99)
+// 특정 요소의 인덱스(위치)를 찾아서 반환하는 메서드
+let arr3 = [2, 2, 2];
+let index = arr3.indexOf(20);
+console.log(index); // -1, 20은 배열에 없음
+
+let objectArr = [
+  { name: "이정환" },
+  { name: "홍길동" },
+];
+
+console.log( "{...}:", 
+  objectArr.indexOf({ name: "이정환" })
+); // -1, 객체는 참조 타입이기 때문에 같은 내용이어도 다른 객체로 인식됨
+
+console.log("===:",
+  objectArr.findIndex(
+    (item) => item.name === "이정환"
+  )
+); // 0, findIndex를 사용하면 객체의 특정 프로퍼티를 기준으로 찾을 수 있음
+
+// 3. findIndex (p. 101)
+// 모든 요소를 순회하면서, 콜백함수를 만족하는 그런
+// 특정 요소의 인덱스(위치)를 반환하는 메서드
+let arr4 = [1, 2, 3];
+const findedIndex = arr4.findIndex(
+  (item) => item === 999
+);
+console.log(findedIndex); // -1, 999는 배열에 없음
+
+// 4. find (p. 103)
+// 모든 요소를 순회하면서 콜백함수를 만족하는 요소를 찾는데, 요소를 그대로 반환
+
+let arr5 = [
+  { name: "이정환" },
+  { name: "홍길동" },
+];
+
+const finded = arr5.find(
+  (item) => item.name === "이정환"
+);
+console.log(finded); // { name: "이정환" }, find는 객체를 그대로 반환
+
+// 5. filter (p. 103)
+// 기존 배열에서 조건을 만족하는 요소들만 필터링하여 새로운 배열로 반환
+
+arr1 = [
+  { name: "이정환", hobby: "테니스" },
+  { name: "김효빈", hobby: "테니스" },
+  { name: "홍길동", hobby: "독서" },
+];
+
+const tennisPeople = arr1.filter(
+  (item) => item.hobby === "테니스"
+);
+console.log(tennisPeople); // 이정환과 김효빈 객체만 포함된 배열
+
+</pre
+    >
+
+    <button id="run-btn">▶️ Run</button>
+    <div id="output" class="console-output"></div>
+    <!-- 기능 스크립트 -->
+    <script src="../js/theme-toggle.js"></script>
+    <script src="../js/editor.js"></script>
+  </body>
+</html>

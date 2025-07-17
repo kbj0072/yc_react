@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JavaScript 복습 - 심화</title>
+
+    <link
+      id="prism-theme"
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-javascript.min.js"></script>
+  </head>
+  <body>
+    <h1>2-9. 배열과 메서드 (3) - 변형 메서드</h1>
+    <button id="theme-toggle">🌙 다크 모드</button>
+
+    <pre
+      id="editor"
+      class="language-javascript"
+      contenteditable="true"
+      spellcheck="false"
+    >
+// 4가지 배열 변형 메서드
+
+let arr1 = [
+  { name: "이정환", hobby: "테니스" },
+  { name: "김효빈", hobby: "테니스" },
+  { name: "홍길동", hobby: "독서" },
+];
+
+// 1. map (p. 104)
+// 배열의 모든 요소를 순회하면서, 각각 콜백함수를 실행하고 그 결과값들을 모아서 새로운 배열로 반환
+let arr2 = [1, 2, 3];
+const mapResult1 = arr2.map((item, idx, arr) => {
+  return item * 2;
+});
+console.log(mapResult1); // [2, 4, 6]
+
+let names = arr1.map((item) => item.name);
+console.log(names); // ["이정환", "홍길동", "김철수"]
+
+// 2. sort (p. 105)
+// 배열을 사전순으로 정렬하는 메서드
+let arr3 = [10, 3, 5];
+arr3.sort((a, b) => {
+  // 리턴 값이 양수면 a가 b보다 뒤이어야 함
+  // 리턴 값이 음수면 a가 b보다 앞이어야 함
+  // 리턴 값이 0이면 a와 b의 순서가 동일함
+  if (a > b) {
+    return 1; // 오름차순
+    // return -1; // 내림차순
+  } else if (a < b) {
+    return -1; // 오름차순
+    // return 1; // 내림차순
+  } else {
+    return 0;
+  }
+});
+
+console.log(arr3); // [3, 5, 10]
+
+// 2-2. toSorted (최근에 추가된 최신 함수)
+// 정렬된 새로운 배열을 반환하는 메서드
+let arr5 = ["c", "a", "b"];
+const sorted = arr5.toSorted();
+console.log(sorted); // ["a", "b", "c"]
+
+// 3. join (p. 107)
+// 배열의 모든 요소를 하나의 문자열로 합쳐서 반환하는 그런 메서드
+let arr6 = ["hi", "im", "winterlood"];
+const joined = arr6.join(" ");
+console.log(joined); // hi im winterlood
+console.log(arr6.join("-")); // 구분자 추가, hi-im-winterlood
+
+// 4. reduce (p. 108)
+// 배열의 모든 요소를 순회하면서, 콜백함수를 실행하고 그 결과값을 누적하여 반환하는 메서드
+// 2개의 인자를 받는 reduce 메서드
+  // i. 4개의 매개변수를 가지는 콜백함수
+    //  -> accumulator: 누적값
+    //  -> currentValue: 현재 요소
+    //  -> currentIndex: 현재 인덱스
+    //  -> array: 원본 배열
+  // ii. 초기값 (optional)
+    // 생략 시 배열의 첫 번째 요소가 초기값으로 사용됨
+let arr = [1, 2, 3, 4, 5];
+let result = arr.reduce((acc, item) => acc + item, 0);
+console.log(result); // 15, 배열의 모든 요소를 더한 값
+</pre
+    >
+
+    <button id="run-btn">▶️ Run</button>
+    <div id="output" class="console-output"></div>
+    <!-- 기능 스크립트 -->
+    <script src="../js/theme-toggle.js"></script>
+    <script src="../js/editor.js"></script>
+  </body>
+</html>

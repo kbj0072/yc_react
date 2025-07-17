@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JavaScript 복습 - 심화</title>
+
+    <link
+      id="prism-theme"
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-javascript.min.js"></script>
+  </head>
+  <body>
+    <h1>2-2. 단락 평가</h1>
+    <button id="theme-toggle">🌙 다크 모드</button>
+
+    <pre
+      id="editor"
+      class="language-javascript"
+      contenteditable="true"
+      spellcheck="false"
+    >
+// 1. AND 단락 평가 (p. 75)
+function calcA() {
+  console.log("calcA 실행");
+  return false;
+}
+
+function calcB() {
+  console.log("calcB 실행");
+  return true;
+}
+console.log(calcA() && calcB()); // calcA 실행 후 false 반환, calcB는 실행되지 않음
+
+// 1-1. AND 단락평가를 이용해 오류 방지하기
+// -> AND 논리 연산은 피연산자의 값이 falsy하면 해당 값을 그대로 반환
+function calcA2() {
+  console.log("calcA2 실행");
+  return undefined;
+}
+
+function calcB2() {
+  console.log("calcB2 실행");
+  return true;
+}
+console.log(calcA2() && calcB2()); // calcA2 실행 후 undefined(falsy) 반환, calcB2는 실행되지 않음
+
+// 1-2. AND 단락평가 활용 사례
+function getName(person) {
+  return person && person.name;
+}
+
+let person = { name: "이정환" };
+let name1 = getName(undefined); // undefined 반환
+let name2 = getName(null); // null 반환
+let name3 = getName(person); // "이정환" 반환
+console.log(name1, name2, name3); // undefined null "이정환"
+
+// 2. OR 단락 평가 (p. 78)
+const name = "이정환" || undefined;
+console.log(name); // "이정환" 반환, OR 연산은 첫 번째 truthy한 값을 반환
+
+// 2-1. OR 단락평가와 null 병합 연산자 비교
+const varA = 0;
+const varB = "이정환";
+
+const resultA = varA || varB; // 0은 falsy이므로 "이정환" 반환
+const resultB = varA ?? varB; // 0은 null이 아니므로 0 반환
+console.log("||:", resultA, ", ??:", resultB); // "이정환" 0
+
+// 2-2. OR 단락평가 활용 사례
+function getName2(person) {
+  return person ? person.name : "이정환"; // person이 falsy하면 기본값 반환
+}
+
+let person2 = null;
+let name4 = getName2(person2); // person2가 null이므로 기본값 반환
+console.log(name4, "(기본값)"); // "이정환"
+
+person2 = { name: "홍길동" };
+name4 = getName2(person2); // person2가 truthy하므로 "홍길동" 반환
+console.log(name4, "(기본값 아님)"); // "홍길동"
+
+</pre
+    >
+
+    <button id="run-btn">▶️ Run</button>
+    <div id="output" class="console-output"></div>
+    <!-- 기능 스크립트 -->
+    <script src="../js/theme-toggle.js"></script>
+    <script src="../js/editor.js"></script>
+  </body>
+</html>

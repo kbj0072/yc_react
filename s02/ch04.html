@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JavaScript 복습 - 심화</title>
+
+    <link
+      id="prism-theme"
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-javascript.min.js"></script>
+  </head>
+  <body>
+    <h1>2-4.스프레드 연산자와 rest 매개변수</h1>
+    <button id="theme-toggle">🌙 다크 모드</button>
+
+    <pre
+      id="editor"
+      class="language-javascript"
+      contenteditable="true"
+      spellcheck="false"
+    >
+// 1. Spread 연산자 (p. 91)
+// -> Spread : 흩뿌리다, 펼치다 라는 뜻
+// -> 객체나 배열에 저장된 여러개의 값을 개별로 흩뿌려주는 역할
+
+let arr1 = [1, 2, 3];
+let arr2 = [4, ...arr1, 5, 6];
+console.log(arr2); // [4, 1, 2, 3, 5, 6]
+
+let obj1 = {
+  a: 1,
+  b: 2,
+};
+let obj2 = {
+  ...obj1, // obj1의 모든 프로퍼티를 펼쳐서 복사
+  c: 3,
+  d: 4,
+};
+console.log(obj2); // { a: 1, b: 2, c: 3, d: 4 }
+
+function funcA(p1, p2, p3) { // 매개변수로 3개의 값을 받는 함수
+  console.log(p1, p2, p3); // 1 2 3
+}
+
+funcA(...arr1); // Spread 연산자로 배열을 분리하여 매개변수로 전달
+funcA(...arr2); // 배열의 크기가 다르더라도 사용 가능
+
+// 2. Rest 매개변수 (p. 92)
+// -> Rest는 나머지 매개변수로 항상 마지막에 선언
+// -> 변수명은 자유롭게 설정 가능
+
+function funcB(one, two, ...rest) {
+  // console.log(one, two);  // 1 2
+  // rest는 나머지 매개변수로, 배열 형태로 전달됨
+  console.log(rest);      // [3, 4], [3]
+}
+
+funcB(1, 2, 3, 4); 
+funcB(1, 2, 3); 
+</pre
+    >
+
+    <button id="run-btn">▶️ Run</button>
+    <div id="output" class="console-output"></div>
+    <!-- 기능 스크립트 -->
+    <script src="../js/theme-toggle.js"></script>
+    <script src="../js/editor.js"></script>
+  </body>
+</html>

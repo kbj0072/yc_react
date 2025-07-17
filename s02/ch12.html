@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JavaScript 복습 - 심화</title>
+
+    <link
+      id="prism-theme"
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-javascript.min.js"></script>
+  </head>
+  <body>
+    <h1>2-12. 비동기 작업 처리하기 1 - 콜백함수</h1>
+    <button id="theme-toggle">🌙 다크 모드</button>
+
+    <pre
+      id="editor"
+      class="language-javascript"
+      contenteditable="true"
+      spellcheck="false"
+    >
+// 음식을 주문하는 상황
+function orderFood(callback) {
+  setTimeout(() => {
+    const food = "떡볶이";
+    callback(food);
+  }, 3000);
+}
+
+function cooldownFood(food, callback) {
+  setTimeout(() => {
+    const cooldownedFood = `식은 ${food}`;
+    callback(cooldownedFood);
+  }, 2000);
+}
+
+function freezeFood(food, callback) {
+  setTimeout(() => {
+    const freezedFood = `냉동된 ${food}`;
+    callback(freezedFood);
+  }, 1500);
+}
+
+orderFood((food) => {
+  console.log(food);
+
+  cooldownFood(food, (cooldownedFood) => {
+    console.log(cooldownedFood);
+
+    freezeFood(cooldownedFood, (freezedFood) => {
+      console.log(freezedFood);
+    });
+  });
+});
+
+</pre
+    >
+
+    <button id="run-btn">▶️ Run</button>
+    <div id="output" class="console-output"></div>
+    <!-- 기능 스크립트 -->
+    <script src="../js/theme-toggle.js"></script>
+    <script src="../js/editor.js"></script>
+  </body>
+</html>

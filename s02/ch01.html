@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JavaScript 복습 - 심화</title>
+
+    <link
+      id="prism-theme"
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-javascript.min.js"></script>
+  </head>
+  <body>
+    <h1>2-1. truthy & falsy</h1>
+    <button id="theme-toggle">🌙 다크 모드</button>
+
+    <pre
+      id="editor"
+      class="language-javascript"
+      contenteditable="true"
+      spellcheck="false"
+    >
+// 1. Falsy한 값 (p. 72)
+let f1 = undefined;   // undefined는 값이 할당되지 않은 상태를 나타냄
+let f2 = null;        // null은 의도적으로 값이 없음을 나타내는 값
+let f3 = 0;           // 숫자 0
+let f4 = -0;          // -0은 0과 동일하지만, 음수로 취급됨
+let f5 = NaN;         // Not a Number
+let f6 = "";          // 빈 문자열
+let f7 = 0n;          // BigInt의 0
+
+if (f1 || f2 || f3 || f4 || f5 || f6 || f7) {
+  console.log("이 코드는 실행되지 않습니다.");
+} else {
+  console.log("모두 Falsy한 값입니다.");
+}
+
+// 2. Truthy 한 값
+// -> 7가지 Falsy 한 값들 제외한 나머지 모든 값
+let t1 = "hello";     // 문자열은 Truthy한 값
+let t2 = 123;         // 숫자는 Truthy한 값
+let t3 = [];          // 빈 배열은 Truthy한 값
+let t4 = {};          // 빈 객체는 Truthy한 값
+let t5 = () => {};    // 빈 화살표 함수는 Truthy한 값
+
+if (t1 && t2 && t3 && t4 && t5) {
+  console.log("모두 Truthy한 값입니다.");
+} else {
+  console.log("이 코드는 실행되지 않습니다.");
+}
+
+// 3. 활용 사례 (p. 73)
+function printName(person) {
+  if (!person) {
+    console.log("person의 값이 없음");
+    return;
+  }
+  console.log("person.name:", person.name);
+}
+
+let person = {};
+printName(person); // undefined는 Falsy한 값이므로 조건문에서 false로 평가됨
+
+person = { name: "이정환" };
+printName(person); // person.name이 Truthy한 값이므로 조건문에서 true로 평가됨
+  </pre
+    >
+
+    <button id="run-btn">▶️ Run</button>
+    <div id="output" class="console-output"></div>
+
+    <!-- 기능 스크립트 -->
+    <script src="../js/theme-toggle.js"></script>
+    <script src="../js/editor.js"></script>
+  </body>
+</html>

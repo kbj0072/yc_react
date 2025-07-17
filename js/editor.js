@@ -2,6 +2,11 @@ const editor = document.getElementById("editor");
 const runBtn = document.getElementById("run-btn");
 const output = document.getElementById("output");
 
+const CONSOLE_MODE = false; // 콘솔 모드 활성화 여부
+const originalLog = console.log;
+const originalErr = console.error;
+const originalWarn = console.warn;
+
 function highlight() {
   const code = editor.innerText;
   // .replace(/&/g, '&amp;')
@@ -37,13 +42,19 @@ function runCode() {
     output.appendChild(line);
   };
 
-  const originalLog = console.log;
-  const originalErr = console.error;
-  const originalWarn = console.warn;
+  // const originalLog = console.log;
+  // const originalErr = console.error;
+  // const originalWarn = console.warn;
 
-  console.log = (...args) => log("log", ...args);
-  console.error = (...args) => log("error", ...args);
-  console.warn = (...args) => log("warn", ...args);
+  if (!CONSOLE_MODE) {
+    console.log = (...args) => log("log", ...args);
+    console.error = (...args) => log("error", ...args);
+    console.warn = (...args) => log("warn", ...args);
+  } else {
+    console.log = originalLog;
+    console.error = originalErr;
+    console.warn = originalWarn;
+  }
 
   try {
     const fn = new Function(code);
@@ -51,10 +62,6 @@ function runCode() {
   } catch (e) {
     console.error(e);
   }
-
-  console.log = originalLog;
-  console.error = originalErr;
-  console.warn = originalWarn;
 }
 
 function handleClick(customOption) {

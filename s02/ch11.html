@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JavaScript 복습 - 심화</title>
+
+    <link
+      id="prism-theme"
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-javascript.min.js"></script>
+  </head>
+  <body>
+    <h1>2-11. 동기와 비동기</h1>
+    <button id="theme-toggle">🌙 다크 모드</button>
+
+    <pre
+      id="editor"
+      class="language-javascript"
+      contenteditable="true"
+      spellcheck="false"
+    >
+// 1. 동기와 비동기 (p. 120)
+
+// 1-1. 동기 (Synchronous)
+console.log("동기: 1번");
+console.log("동기: 2번");
+console.log("동기: 3번");
+
+// 1-2. 비동기 (Asynchronous)
+setTimeout(() => {
+  console.log("비동기: 1번!");
+}, 3000); // 2초 후에 실행
+console.log("비동기: 2번!");
+
+function orderCoffee(coffee, time) {
+  setTimeout(() => {
+    console.log(`${coffee} 제조 완료`);
+  }, time);
+}
+
+orderCoffee("달콤한 커피", 4000); // 4초 후에 달콤한 커피 제조 완료
+orderCoffee("레몬 티", 2000); // 2초 후에 레몬 티 제조 완료
+orderCoffee("시원한 커피", 3000); // 3초 후에 시원한 커피 제조 완료
+
+// 2. 콜백 함수로 비동기 처리하기 (p. 122)
+function double(num) {
+  setTimeout(() => {
+    const doubleNum = num * 2;
+    return doubleNum;
+  }, 1000);
+}
+
+const res = double(10);
+console.log(res); // undefined, double 함수가 비동기적으로 실행되기 때문
+
+function double(num, cb) {
+  setTimeout(() => {
+    const doubleNum = num * 2;
+    cb(doubleNum);
+  }, 1000);
+}
+
+double(10, (res) => {
+  console.log(res); // 20, 콜백 함수로 결과를 받음
+});
+
+</pre
+    >
+
+    <button id="run-btn">▶️ Run</button>
+    <div id="output" class="console-output"></div>
+    <!-- 기능 스크립트 -->
+    <script src="../js/theme-toggle.js"></script>
+    <script src="../js/editor.js"></script>
+  </body>
+</html>

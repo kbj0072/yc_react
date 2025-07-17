@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JavaScript 복습 - 심화</title>
+
+    <link
+      id="prism-theme"
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-javascript.min.js"></script>
+  </head>
+  <body>
+    <h1>2-3.구조 분해 할당</h1>
+    <button id="theme-toggle">🌙 다크 모드</button>
+
+    <pre
+      id="editor"
+      class="language-javascript"
+      contenteditable="true"
+      spellcheck="false"
+    >
+// 1. 배열의 구조 분해 할당 (p. 88)
+let arr = [1, 2, 3];
+
+let [one, two, three, four = 4] = arr;
+console.log(one, two, three, four); // 1 2 3 4
+
+// 2. 객체의 구조 분해 할당 (p. 89)
+let person = {
+  name: "이정환",
+  age: 27,
+  hobby: "테니스",
+};
+
+let {
+  age: myAge, // age는 myAge로 이름 변경
+  hobby,
+  name,
+  extra = "hello",
+} = person; // age는 myAge로, hobby는 그대로, name은 그대로, extra는 "hello"로 기본값 설정
+console.log(myAge, hobby, name, extra); // 27 테니스 이정환 hello
+
+// 3. 함수의 매개변수가 객체일 때 구조 분해 할당하기 (p. 90)
+const func = ({ name, age, hobby, extra }) => {
+  console.log(name, age, hobby, extra);
+};
+
+func(person); // 이정환 27 테니스 undefined
+</pre
+    >
+
+    <button id="run-btn">▶️ Run</button>
+    <div id="output" class="console-output"></div>
+    <!-- 기능 스크립트 -->
+    <script src="../js/theme-toggle.js"></script>
+    <script src="../js/editor.js"></script>
+  </body>
+</html>

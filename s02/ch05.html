@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JavaScript 복습 - 심화</title>
+
+    <link
+      id="prism-theme"
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-javascript.min.js"></script>
+  </head>
+  <body>
+    <h1>2-5.원시 타입과 객체 타입 차이</h1>
+    <button id="theme-toggle">🌙 다크 모드</button>
+
+    <pre
+      id="editor"
+      class="language-javascript"
+      contenteditable="true"
+      spellcheck="false"
+    >
+// 1. 자바스크립트의 자료형 (p. 19)
+// -> 자료형(Data Type)은 원시 자료형(Primitive Type)과 객체 자료형(Object Type)으로 나뉨
+// -> 원시 자료형은 변경 불가능한 값(immutable value)으로, 객체 자료형은 변경 가능한 값(mutable value)
+
+// -> 원시 자료형은 7가지, 객체 자료형은 객체, 배열, 함수 등 다양한 형태로 존재
+// -> 원시 자료형: 문자형(string), 숫자형(number), 불리언형(boolean), null형(null), Undefined형, symbol, bigint
+
+// -> 객체 자료형은 Object형으로 배열, 함수, 정규 표현식 등도 포함
+
+// 2. 객체와 참조 (p. 81)
+let numA = 1;
+let numB = 2;
+
+let person = {
+  name: "이정환"
+};
+let man = person; // 하나의 객체를 두 변수가 참조
+man.age = 25;     // man 객체를 통해 age 속성에 접근하여 값 변경
+
+console.log(person); // 같은 객체에 접근, { name: "이정환", age: 25 }
+
+// 2-1. 참조에 의한 비교
+numA = 1;
+numB = 1;
+console.log(numA === numB); // true로, 값이 같음
+
+let arr1 = [1, 2, 3]; // 배열은 객체이므로 참조에 의한 비교
+let arr2 = [1, 2, 3]; // 서로 다른 객체이므로 참조가 다름
+console.log(arr1 === arr2); // false로, 서로 다른 객체이므로 참조가 다름
+
+</pre
+    >
+
+    <button id="run-btn">▶️ Run</button>
+    <div id="output" class="console-output"></div>
+    <!-- 기능 스크립트 -->
+    <script src="../js/theme-toggle.js"></script>
+    <script src="../js/editor.js"></script>
+  </body>
+</html>

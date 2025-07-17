@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JavaScript 복습 - 심화</title>
+
+    <link
+      id="prism-theme"
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-javascript.min.js"></script>
+  </head>
+  <body>
+    <h1>2-13. 비동기 작업 처리하기 2 - Promise</h1>
+    <button id="theme-toggle">🌙 다크 모드</button>
+
+    <pre
+      id="editor"
+      class="language-javascript"
+      contenteditable="true"
+      spellcheck="false"
+    >
+
+// 1. 프로미스 객체를 이용해 비동기 처리하기 (p. 124)
+// resolve: 성공했을 때 호출하는 함수
+// reject: 실패했을 때 호출하는 함수
+    
+function add10(num) {
+  const promise = new Promise((resolve, reject) => {
+    // 비동기 작업 실행하는 함수
+    // executor
+
+    setTimeout(() => {
+      if (typeof num === "number") {
+        resolve(num + 10);
+      } else {
+        reject("num이 숫자가 아닙니다");
+      }
+    }, 2000);
+  });
+  return promise;
+}
+
+// then: 프로미스가 성공했을 때 실행되는 함수
+// catch: 프로미스가 실패했을 때 실행되는 함수
+// finally: 프로미스가 성공하든 실패하든 실행되는 함수
+
+add10(0)
+  .then((result) => {
+    console.log(result); // 10
+    return add10(result);
+  })
+  .then((result) => {
+    console.log(result); // 20
+    return add10(undefined);
+  })
+  .then((result) => {
+    console.log(result); // 30, 실행되지 않음
+  })
+  .catch((error) => {
+    console.log(error); // num이 숫자가 아닙니다
+  });
+
+</pre
+    >
+
+    <button id="run-btn">▶️ Run</button>
+    <div id="output" class="console-output"></div>
+    <!-- 기능 스크립트 -->
+    <script src="../js/theme-toggle.js"></script>
+    <script src="../js/editor.js"></script>
+  </body>
+</html>
