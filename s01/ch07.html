@@ -1,24 +1,33 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8" />
-  <title>JavaScript 복습</title>
+  <head>
+    <meta charset="UTF-8" />
+    <title>JavaScript 복습</title>
 
-  <link id="prism-theme" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css">
-  <link rel="stylesheet" href="../css/style.css" />
+    <link
+      id="prism-theme"
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
 
-  <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-javascript.min.js"></script>
-</head>
-<body>
-  <h1>1-7. 연산자 1</h1>
-  <button id="theme-toggle">🌙 다크 모드</button>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-javascript.min.js"></script>
+  </head>
+  <body>
+    <h1>1-7. 연산자 1</h1>
+    <button id="theme-toggle">🌙 다크 모드</button>
 
-  <pre id="editor" class="language-javascript" contenteditable="true" spellcheck="false">
-// 1. 대입 연산자
+    <pre
+      id="editor"
+      class="language-javascript"
+      contenteditable="true"
+      spellcheck="false"
+    >
+// 1. 대입 연산자 (p. 26)
 let var1 = 1;
 
-// 2. 산술 연산자
+// 2. 산술 연산자 (p. 27)
 let num1 = 3 + 2;
 let num2 = 3 - 2;
 let num3 = 3 * 2;
@@ -27,7 +36,7 @@ let num5 = 3 % 2;
 
 let num6 = (1 + 2) * 10;
 
-// 3. 복합 대입 연산자
+// 3. 복합 대입 연산자 (p. 28)
 let num7 = 10;
 num7 += 20;
 num7 -= 20;
@@ -35,19 +44,19 @@ num7 *= 20;
 num7 /= 20;
 num7 %= 10;
 
-// 4. 증감 연산자
+// 4. 증감 연산자 (p. 29)
 let num8 = 10;
 ++num8;
 num8++;
 
-// 5. 논리 연산자
+// 5. 논리 연산자 (p. 30)
 let or = true || false;
 
 let and = true && false;
 
 let not = !true;
 
-// 6. 비교 연산자
+// 6. 비교 연산자 (p. 31)
 let comp1 = 1 === "1";
 let comp2 = 1 !== 2;
 
@@ -56,13 +65,14 @@ let comp4 = 2 < 1;
 
 let comp5 = 2 >= 2;
 let comp6 = 2 <= 2;
-  </pre>
+  </pre
+    >
 
-  <button id="run-btn">▶️ Run</button>
-  <div id="output" class="console-output"></div>
+    <button id="run-btn">▶️ Run</button>
+    <div id="output" class="console-output"></div>
 
-  <!-- 기능 스크립트 -->
-  <script src="../js/theme-toggle.js"></script>
-  <script src="../js/editor.js"></script>
-</body>
+    <!-- 기능 스크립트 -->
+    <script src="../js/theme-toggle.js"></script>
+    <script src="../js/editor.js"></script>
+  </body>
 </html>

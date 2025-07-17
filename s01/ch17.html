@@ -15,7 +15,7 @@
     <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-javascript.min.js"></script>
   </head>
   <body>
-    <h1>1-10. 반복문</h1>
+    <h1>1-17. 배열</h1>
     <button id="theme-toggle">🌙 다크 모드</button>
 
     <pre
@@ -24,17 +24,29 @@
       contenteditable="true"
       spellcheck="false"
     >
-// for문 (p. 42)
-for (let idx = 1; idx <= 10; idx++) { // 1부터 10까지 반복
-  if (idx % 2 === 0) { // 짝수이면 스킵
-    continue;
-  }
-  console.log(idx); // 홀수만 출력됨
+// 1. 배열 선언 (p. 67)
+let arrA = new Array(); // 배열 생성자
+let arrB = []; // 배열 리터럴 (대부분 사용)
 
-  if (idx >= 5) { // 인덱스가 5 이상이면 반복문 종료
-    break;
-  }
-}
+let arrC = [
+  1,
+  2,
+  3,
+  true,
+  "hello",
+  null,
+  undefined,
+  () => {},
+  {},
+  [],
+];
+
+// 2. 배열 요소 접근 (p. 68)
+let item1 = arrC[0];
+let item2 = arrC[1];
+
+arrC[0] = "hello";
+console.log(arrC);
   </pre
     >
 

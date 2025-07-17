@@ -1,21 +1,30 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8" />
-  <title>JavaScript 복습</title>
+  <head>
+    <meta charset="UTF-8" />
+    <title>JavaScript 복습</title>
 
-  <link id="prism-theme" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css">
-  <link rel="stylesheet" href="../css/style.css" />
+    <link
+      id="prism-theme"
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
 
-  <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-javascript.min.js"></script>
-</head>
-<body>
-  <h1>1-11. 함수</h1>
-  <button id="theme-toggle">🌙 다크 모드</button>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-javascript.min.js"></script>
+  </head>
+  <body>
+    <h1>1-11. 함수</h1>
+    <button id="theme-toggle">🌙 다크 모드</button>
 
-  <pre id="editor" class="language-javascript" contenteditable="true" spellcheck="false">
-// 함수
+    <pre
+      id="editor"
+      class="language-javascript"
+      contenteditable="true"
+      spellcheck="false"
+    >
+// 함수 (p. 44)
 let area1 = getArea(10, 20); // 내부에서 another 출력 후, 10 * 20 = 200 리턴
 console.log(area1); // 200
 
@@ -24,7 +33,7 @@ console.log(area2); // 600
 
 getArea(120, 200); // 내부에서 another 출력 후, 120 * 200 = 24000 리턴(대입 없음)
 
-// 호이스팅(Hoisting)
+// 호이스팅(Hoisting) - (p. 49)
 // -> 끌어올리다 라는 뜻: 변수와 함수의 선언을 최상위로 끌어올리는 것
 function getArea(width, height) {
   function another() {
@@ -37,13 +46,14 @@ function getArea(width, height) {
 
   return area;
 }
-  </pre>
+  </pre
+    >
 
-  <button id="run-btn">▶️ Run</button>
-  <div id="output" class="console-output"></div>
+    <button id="run-btn">▶️ Run</button>
+    <div id="output" class="console-output"></div>
 
-  <!-- 기능 스크립트 -->
-  <script src="../js/theme-toggle.js"></script>
-  <script src="../js/editor.js"></script>
-</body>
+    <!-- 기능 스크립트 -->
+    <script src="../js/theme-toggle.js"></script>
+    <script src="../js/editor.js"></script>
+  </body>
 </html>
