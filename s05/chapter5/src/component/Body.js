@@ -1,6 +1,8 @@
+import "./Body.css";
+
 function Body() {
   return (
-    <div style={{ backgroundColor: "red", color: "blue" }}>
+    <div className="body">
       <h1>body</h1>
     </div>
   );
