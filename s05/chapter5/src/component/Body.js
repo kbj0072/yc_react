@@ -1,9 +1,10 @@
 function Body() {
-  const number = 1;
+  const numA = 1;
+  const numB = 2;
   return (
     <div>
       <h1>Body</h1>
-      <h2>{number}</h2>
+      <h2>{numA + numB}</h2>
     </div>
   );
 }
