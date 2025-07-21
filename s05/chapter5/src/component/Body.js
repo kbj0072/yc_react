@@ -1,12 +1,10 @@
 function Body() {
-  const num = 19;
-  return (
-    <>
-      <h2>
-        {num}은(는) {num % 2 === 0 ? "짝수" : "홀수"}입니다.
-      </h2>
-    </>
-  );
+  const num = 200;
+  if (num % 2 === 0) {
+    return <div>{num}은(는) 짝수입니다</div>;
+  } else {
+    return <div>{num}은(는) 홀수입니다</div>;
+  }
 }
 
 export default Body;
