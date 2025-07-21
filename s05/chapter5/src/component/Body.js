@@ -1,10 +1,10 @@
 function Body() {
-  const strA = "안녕";
-  const strB = "리액트";
+  const boolA = true;
+  const boolB = false;
   return (
     <div>
       <h1>Body</h1>
-      <h2>{strA + strB}</h2>
+      <h2>{String(boolA || boolB)}</h2>
     </div>
   );
 }
