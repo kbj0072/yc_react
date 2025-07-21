@@ -1,9 +1,9 @@
 function Body() {
-
   return (
-    <div>
-      <h1>Body
-    </div>
+    <>
+      <div>div1</div>
+      <div>div2</div>
+    </>
   );
 }
 
