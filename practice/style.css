@@ -1,0 +1,61 @@
+:root {
+  --bg:#f5f7fb; --card:#fff; --text:#172033; --muted:#667085; --line:#e4e7ec;
+  --brand:#1769ff; --brand2:#5b4bff; --ok:#138a52; --bad:#c9362b; --warn:#b05b00;
+  --code:#111827; --soft:#eef4ff;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text)}
+button,input,textarea,select{font:inherit}
+.top{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topin{max-width:1180px;margin:auto;padding:14px 20px;display:flex;align-items:center;gap:14px;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800} .logo{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--brand),var(--brand2));display:grid;place-items:center;color:#fff}
+.small{font-size:13px;color:var(--muted)}
+.wrap{max-width:1180px;margin:auto;padding:26px 20px 60px}
+.hero{display:grid;grid-template-columns:1.35fr .65fr;gap:18px;margin-bottom:20px}
+.panel,.qcard,.sidecard{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 8px 28px rgba(16,24,40,.05)}
+.heroMain{padding:28px} .heroMain h1{font-size:34px;line-height:1.15;margin:0 0 12px} .heroMain p{color:var(--muted);line-height:1.7;margin:0}
+.heroStat{padding:22px;display:grid;gap:12px;align-content:center}
+.stat{display:flex;justify-content:space-between;padding:12px 14px;background:#f8fafc;border-radius:12px} .stat b{font-size:18px}
+.toolbar{padding:16px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:18px}
+select,.btn,.ghost{border:1px solid var(--line);border-radius:11px;background:#fff;padding:9px 12px;cursor:pointer}
+.btn{background:var(--brand);border-color:var(--brand);color:white;font-weight:700}
+.ghost:hover,select:hover{border-color:#aeb7c6}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:18px}
+.qcard{padding:24px;min-height:560px}
+.meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:14px} .tag{padding:5px 9px;border-radius:999px;background:var(--soft);color:#2b5fcc;font-size:12px;font-weight:700} .type{background:#f2f4f7;color:#475467}
+.qtitle{font-size:21px;line-height:1.55;margin:10px 0 18px}
+.code{background:var(--code);color:#e5e7eb;border-radius:13px;padding:16px;white-space:pre-wrap;font-family:"SFMono-Regular",Consolas,monospace;line-height:1.6;overflow:auto}
+.options{display:grid;gap:10px;margin:16px 0} .opt{text-align:left;border:1px solid var(--line);padding:12px 14px;border-radius:12px;background:#fff;cursor:pointer} .opt:hover{border-color:#9fb6ff;background:#f8faff} .opt.sel{border-color:var(--brand);background:#eef4ff}
+.answerRow{display:flex;gap:10px;margin-top:16px} .answerRow input{flex:1;border:1px solid var(--line);border-radius:11px;padding:11px}
+.editor{width:100%;min-height:230px;background:#0b1220;color:#e5e7eb;border:0;border-radius:13px;padding:16px;font-family:"SFMono-Regular",Consolas,monospace;line-height:1.55;resize:vertical}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.feedback{margin-top:16px;border-radius:12px;padding:14px;display:none;line-height:1.6} .feedback.ok{display:block;background:#ecfdf3;color:#166534} .feedback.bad{display:block;background:#fff1f0;color:#9f1d16}
+.console{margin-top:12px;background:#07111f;color:#d1e7ff;border-radius:12px;padding:13px;min-height:58px;white-space:pre-wrap;font-family:monospace}
+.side{display:grid;gap:14px;align-content:start} .sidecard{padding:16px} .sidecard h3{margin:0 0 12px;font-size:15px}
+.bar{height:8px;background:#eef2f6;border-radius:99px;overflow:hidden} .bar>i{display:block;height:100%;background:linear-gradient(90deg,var(--brand),var(--brand2));width:0}
+.master{display:grid;gap:9px} .mrow{display:grid;grid-template-columns:1fr 52px;gap:10px;align-items:center;font-size:13px}
+.play{margin-top:18px;padding:20px} .playgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px} .play h2{margin-top:0}
+.hint{font-size:13px;color:var(--muted);line-height:1.6}
+.footerNote{margin-top:20px;color:var(--muted);font-size:12px;line-height:1.6}
+@media(max-width:900px){.hero,.layout,.playgrid{grid-template-columns:1fr} .side{order:-1} .heroMain h1{font-size:28px}}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}
+.tabbtn{border:1px solid var(--line);background:#fff;padding:10px 14px;border-radius:11px;cursor:pointer;font-weight:700}
+.tabbtn.active{background:var(--brand);color:#fff;border-color:var(--brand)}
+.view{display:none}.view.active{display:block}
+.repoLab{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 8px 28px rgba(16,24,40,.05);overflow:hidden}
+.repoHead{padding:18px 20px;border-bottom:1px solid var(--line);display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.repoHead h2{margin:0;font-size:20px}.repoHead p{margin:4px 0 0;color:var(--muted);font-size:13px}
+.repoGrid{display:grid;grid-template-columns:320px minmax(0,1fr);min-height:720px}
+.chapterPane{border-right:1px solid var(--line);padding:14px;background:#fafbfc;overflow:auto;max-height:780px}
+.chapterGroup{margin-bottom:16px}.chapterGroup h3{font-size:13px;margin:8px 6px;color:#475467}
+.chapterBtn{width:100%;text-align:left;border:1px solid transparent;background:transparent;border-radius:10px;padding:9px 10px;cursor:pointer;line-height:1.35;font-size:13px}
+.chapterBtn:hover{background:#eef4ff}.chapterBtn.active{background:#eaf1ff;border-color:#b8ccff;color:#174ea6;font-weight:700}
+.framePane{display:flex;flex-direction:column;min-width:0}
+.frameToolbar{padding:10px 12px;border-bottom:1px solid var(--line);display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.frameToolbar .now{font-size:13px;font-weight:700}.frameToolbar .links{display:flex;gap:8px}
+.frameToolbar a{font-size:12px;text-decoration:none;border:1px solid var(--line);padding:7px 9px;border-radius:9px;color:var(--text);background:#fff}
+.repoFrame{width:100%;height:720px;border:0;background:#fff}
+.relatedBox{margin-top:14px;padding:12px 14px;background:#f8fafc;border:1px dashed #cfd7e6;border-radius:12px;display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.relatedBox .small2{font-size:12px;color:var(--muted)}
+.relatedBtn{border:1px solid #b8ccff;background:#eef4ff;color:#174ea6;border-radius:9px;padding:8px 10px;cursor:pointer;font-weight:700}
+@media(max-width:900px){.repoGrid{grid-template-columns:1fr}.chapterPane{border-right:0;border-bottom:1px solid var(--line);max-height:300px}.repoFrame{height:650px}}
